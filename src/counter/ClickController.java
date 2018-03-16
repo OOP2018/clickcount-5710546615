@@ -1,12 +1,12 @@
 package counter;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 /**
  * Controller for the Counter buttons user interface.
- * @author jim
+ * 
+ * @author Visurt Anuttivong
  *
  */
 public class ClickController {
@@ -16,15 +16,35 @@ public class ClickController {
 	private Button minusbutton;
 	/** The counter that records button clicks. */
 	private Counter counter;
-
 	
-	public void plusButtonHandler(ActionEvent event) {
-		//TODO add 1 to counter
-		System.out.println("TODO: add 1 to counter and delete this pritnln");
+	/**
+	 * Gets the counter.
+	 * 
+	 * @return the counter
+	 */
+	public Counter getCounter() {
+		return counter;
+	}
+
+	/**
+	 * Sets the counter
+	 * @param counter the new counter to set in
+	 */
+	public void setCounter(Counter counter) {
+		this.counter = counter;
+	}
+
+	/**
+	 * Plus Button Handler is to increase the counter by 1.
+	 */
+	public void plusButtonHandler() {
+		counter.add(1);
 	}
 	
-	
-	public void minusButtonHandler(ActionEvent event) {
-		System.out.println("TODO: add -1 to counter and delete this pritnln");
+	/**
+	 * Minus Button Handler is to decrease the counter by 1.
+	 */
+	public void minusButtonHandler() {
+		counter.add(-1);
 	}
 }

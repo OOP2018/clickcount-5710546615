@@ -14,9 +14,11 @@ import javafx.stage.Stage;
  * A Controller for a window that shows the value of a Counter.
  * This has only one component (but you can add more components),
  * so write it in code instead of FXML.
+ * 
+ * @author Visurt Anuttivong
  *
  */
-public class CounterView implements java.util.Observer {
+public class CounterView extends Stage implements java.util.Observer {
 	/** the stage (top-level window) for showing scene */
 	private Stage stage;
 	/** a counter to show value of */
@@ -33,22 +35,20 @@ public class CounterView implements java.util.Observer {
 		initComponents();
 	}
 	
+	/**
+	 * Initializes the components.
+	 */
 	private void initComponents() {
-		stage = new Stage();
+		stage = this;
 		// components and containers for our window
 		HBox root = new HBox();
-		//TODO Set some padding around the HBox
 		root.setPadding(new Insets(10));
-		//TODO Align components in center of the HBox
 		root.setAlignment(Pos.CENTER);
 		// The label that will show the counter value.
 		label = new Label("   ");
 		// make the label big enough
 		label.setPrefWidth(144);
-		//TODO Make the text BIG. Use setFont to create a font.
-		//TODO Be careful to import the correct Font class (not java.awt.Font).
 		label.setFont(new Font("Arial", 80.0));
-		//TODO Set the text alignment to CENTER
 		label.setAlignment(Pos.CENTER);
 		// Add the label to the HBox.  You can all more components, too.
 		root.getChildren().add(label);
@@ -66,11 +66,19 @@ public class CounterView implements java.util.Observer {
 		displayCount();
 	}
 	
+	/**
+	 * Set Label to the updated value.
+	 */
 	public void displayCount() {
 		label.setText( String.format("%2d", counter.getCount()) );
 	}
 
-	@Override
+	/**
+	 * Update the value.
+	 * 
+	 * @param o not used
+	 * @param arg not used
+	 */
 	public void update(Observable o, Object arg) {
 		displayCount();
 	}	
